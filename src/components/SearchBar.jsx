@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import SearchIcon from '../images/Search.svg';
 
-function SearchBar() {
+function SearchBar({handleSearch}) {
 
     const [username, setUsername] = useState('');
     
@@ -11,7 +13,7 @@ function SearchBar() {
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log(username);
+        handleSearch(username);
         setUsername('');
     }
 
@@ -22,10 +24,16 @@ function SearchBar() {
                     <button type="submit">
                         <img src={SearchIcon} alt="Search Icon" className='inline'/>
                     </button>
-                    <input type="text" placeholder="username" className="bg-transparent font-medium placeholder:font-[450] text-[#97A3B6] placeholder:text-[#97A3B6]" value={username} onChange={handleSubmit}/>
+                    <input type="text" placeholder="username" className="bg-transparent font-medium placeholder:font-[450] text-[#97A3B6] placeholder:text-[#97A3B6]" onChange={handleSubmit}/>
                 </label>
             </form>
             
         </article>
     )
-} export default SearchBar;
+} 
+
+SearchBar.propTypes = {
+    handleSearch: PropTypes.func.isRequired,
+};
+
+export default SearchBar;
