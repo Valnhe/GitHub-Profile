@@ -5,7 +5,7 @@ function MiniCard ({label, value}) {
         <article className="bg-[#111729] w-fit h-fit px-5 py-3 rounded-xl">
             <span>{label}</span>
             <hr className="h-full w-[1px] border-[1px] mx-4 border-[#4A5567] inline"/>
-            <span className="text-white font-normal">{value}</span>
+            <span className="text-white font-normal">{value ? value : label=== 'Location' ? 'Not Found' : '0'}</span>
 
         </article>
     )
