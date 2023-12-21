@@ -2,33 +2,45 @@ import StarIcon from '../images/Star.svg';
 import NestingIcon from '../images/Nesting.svg';
 import ChieldIcon from '../images/Chield_alt.svg';
 
-function repositoriesCard({url}) {
+function repositoriesCard({url , name , description , license , forks , stars , updated}) {
+
+    const currentDate = new Date();
+    const parsedOriginalDate = new Date(updated);
+
+    const timeDifference = currentDate - parsedOriginalDate;
+    const formattedDate  = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
     return (
-        <article className="bg-gradient-to-r from-[#111729] to-[#1D1B48] w-full lg:w-1/2 px-5 py-3 rounded-xl">
+        <article className="bg-gradient-to-r from-[#111729] to-[#1D1B48] w-full h-fit px-6 py-6 rounded-xl">
             <a href={url} target="_blanck" >
             <h3 className="text-xl text-white">
-                nombre del repositories
+                {name}
             </h3>
             <p className="text-base text-[#CDD5E0] font-normal my-2">
-                Descripcion
+                {description}
             </p>
-            <footer className="flex text-center gap-2 text-[#CDD5E0]">
-            <section className='flex items-center gap-1'>
-                    <img src={ChieldIcon} alt="Star Icon"/>
-                    <p>MIT</p>
-                </section>
-                
+            <footer className="flex flex-col sm:flex-row text-center gap-2 text-[#CDD5E0]">
+
+                {
+                    license ? (
+                        <section className='flex items-center gap-1'>
+                            <img src={ChieldIcon} alt="Star Icon"/>
+                            <p>{license}</p>
+                        </section>
+                    ) : ''
+                }
+
                 <section className='flex items-center gap-1'>
                     <img src={NestingIcon} alt="Star Icon"/>
-                    <p>valor</p>
+                    <p>{forks}</p>
                 </section>
 
                 <section className='flex items-center gap-1'>
                     <img src={StarIcon} alt="Star Icon"/>
-                    <p>valor</p>
+                    <p>{stars}</p>
                 </section>
                 
-                <span className='text-sm self-end ml-5'>updated dias days ago</span>
+                <span className='text-sm self-end ml-5'>updated {formattedDate === 0 ? 'today' : `${formattedDate} days ago`}</span>
 
             </footer>
         </a>
