@@ -36,15 +36,21 @@ function App() {
 
   return (
     <div className='min-h-screen bg-[#20293A] font-medium text-[#4A5567]'>
-      <header className='flex justify-center'>
+      <header id='image-bkg' className='flex justify-center'>
         <SearchBar handleSearch={handleSearch}/>
       </header>
       <main className='mx-16 xl:mx-32'>
+        
         <section className='flex flex-col lg:flex-row gap-4'>
           <MiniCard label={"Followers"} value={data.followers}/>
           <MiniCard label={"Following"} value={data.following}/>
           <MiniCard label={"Location"} value={data.location}/>
         </section>
+
+        <header className='my-14'>
+          <h1 className='text-white text-[32px]'>GitHub</h1>
+          <h2 className='text-base text-[#CDD5E0] font-normal' >How people build software.</h2>
+        </header>
 
         <section className='grid grid-cols-1 lg:grid-cols-2 gap-7'>
 
